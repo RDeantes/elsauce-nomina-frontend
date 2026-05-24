@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import Menu from "@/components/ui/menu";
+import Menu from "@/components/ui/Menu";
 
 export default function RootLayout({
 
