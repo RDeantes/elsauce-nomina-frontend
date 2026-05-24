@@ -774,7 +774,7 @@ export default function Home() {
                   .includes(texto)
 
               );
- <QREmpleado id={15} />
+
             })
             .map((empleado: any) => (
 
