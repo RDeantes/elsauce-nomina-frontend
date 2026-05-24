@@ -12,8 +12,7 @@ export default function NominasPage() {
   // ESTADOS
   // =========================================
 
-  const [nominas, setNominas] =
-    useState([]);
+ const [nominas, setNominas] = useState<any[]>([]);
 
   // =========================================
   // OBTENER NOMINAS ACUMULADAS
