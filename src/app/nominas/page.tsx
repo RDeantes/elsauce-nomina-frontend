@@ -107,21 +107,38 @@ export default function NominasPage() {
   // PAGAR NOMINA
   // =========================================
 
-  async function pagarNomina(
-    id_empleado: number
-  ) {
-
+  async function pagarNomina(id_empleado: number) {
     try {
-
-      const response =
-        await api.post(
-          `/nominas/imprimir-y-pagar/${id_empleado}`
-        );
-
-      alert(
-        response.data.mensaje
+      // 1. Agregamos { responseType: 'blob' } para que axios maneje el archivo
+      const response = await api.post(
+        `/nominas/imprimir-y-pagar/${id_empleado}`, 
+        {}, 
+        { responseType: 'blob' }
       );
 
+      // 2. Creamos un enlace temporal para descargar el archivo
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      
+      // Nombre que tendrá el archivo al descargarse
+      link.setAttribute('download', `Recibo_Pago_${id_empleado}.docx`);
+      
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // 3. Avisamos al usuario
+      alert("¡Pago liquidado y recibo descargado!");
+      
+      // 4. (Opcional) Aquí podrías volver a llamar a obtenerEmpleados 
+      // o recargar la lista de nóminas para que desaparezca el botón
+      
+    } catch (error) {
+      console.error(error);
+      alert("Error al procesar el pago");
+    }
+  }
       // =====================================
       // RECARGAR TABLA
       // =====================================
