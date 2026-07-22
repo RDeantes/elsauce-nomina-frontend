@@ -28,6 +28,10 @@ export default function Menu() {
                 Nómina
             </Link>
 
+            <Link href="/descansos">
+             Descansos
+            </Link>
+
         </div>
 
     );
