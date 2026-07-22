@@ -16,11 +16,12 @@ const DIAS_SEMANA = [
 
 export default function DescansosPage() {
 
-  const [empleados, setEmpleados]       = useState([]);
-  const [descansos, setDescansos]       = useState([]);
-  const [empleadoSel, setEmpleadoSel]   = useState<any>(null);
-  const [diaSel, setDiaSel]             = useState("");
-  const [cargando, setCargando]         = useState(false);
+  const [empleados, setEmpleados]     = useState([]);
+  const [descansos, setDescansos]     = useState([]);
+  const [empleadoSel, setEmpleadoSel] = useState<any>(null);
+  const [diaSel, setDiaSel]           = useState("");
+  const [cargando, setCargando]       = useState(false);
+  const [busqueda, setBusqueda]       = useState("");
 
   // =========================================
   // CARGA INICIAL
@@ -128,33 +129,54 @@ export default function DescansosPage() {
 
           <div className="bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden">
 
+            {/* HEADER */}
             <div className="px-6 py-4 bg-[#F9FAFB] border-b border-[#E5E7EB]">
               <h2 className="text-lg font-semibold text-[#111827]">
                 Empleados
               </h2>
             </div>
 
-            {empleados.map((empleado: any) => (
-              <div
-                key={empleado.id_empleado}
-                onClick={() => seleccionarEmpleado(empleado)}
-                className={`px-6 py-4 border-b border-[#F3F4F6] cursor-pointer flex justify-between items-center transition-colors ${
-                  empleadoSel?.id_empleado === empleado.id_empleado
-                    ? "bg-[#EFF6FF] border-l-4 border-l-[#2563EB]"
-                    : "hover:bg-[#F9FAFB]"
-                }`}
-              >
-                <div>
-                  <p className="font-medium text-[#111827]">
-                    {empleado.nombre} {empleado.apellido_paterno}
-                  </p>
-                  <p className="text-sm text-[#6B7280]">
-                    ID: {empleado.id_empleado}
-                  </p>
+            {/* BUSCADOR */}
+            <div className="px-6 py-3 border-b border-[#E5E7EB]">
+              <input
+                placeholder="Buscar por nombre o ID..."
+                value={busqueda}
+                onChange={(e) => setBusqueda(e.target.value)}
+                className="w-full h-10 rounded-xl border border-[#D1D5DB] px-3 text-sm outline-none focus:border-[#2563EB]"
+              />
+            </div>
+
+            {/* LISTA */}
+            {empleados
+              .filter((empleado: any) => {
+                const texto = busqueda.toLowerCase();
+                return (
+                  empleado.nombre?.toLowerCase().includes(texto) ||
+                  empleado.apellido_paterno?.toLowerCase().includes(texto) ||
+                  String(empleado.id_empleado).includes(texto)
+                );
+              })
+              .map((empleado: any) => (
+                <div
+                  key={empleado.id_empleado}
+                  onClick={() => seleccionarEmpleado(empleado)}
+                  className={`px-6 py-4 border-b border-[#F3F4F6] cursor-pointer flex justify-between items-center transition-colors ${
+                    empleadoSel?.id_empleado === empleado.id_empleado
+                      ? "bg-[#EFF6FF] border-l-4 border-l-[#2563EB]"
+                      : "hover:bg-[#F9FAFB]"
+                  }`}
+                >
+                  <div>
+                    <p className="font-medium text-[#111827]">
+                      {empleado.nombre} {empleado.apellido_paterno}
+                    </p>
+                    <p className="text-sm text-[#6B7280]">
+                      ID: {empleado.id_empleado}
+                    </p>
+                  </div>
+                  <span className="text-[#9CA3AF] text-sm">→</span>
                 </div>
-                <span className="text-[#9CA3AF] text-sm">→</span>
-              </div>
-            ))}
+              ))}
 
           </div>
 
