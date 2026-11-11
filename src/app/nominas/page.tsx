@@ -158,12 +158,12 @@ export default function NominasPage() {
   // =========================================
 
   return (
-    <main className="min-h-screen bg-[#F5F6F8] p-6">
+    <main className="min-h-screen bg-[#F5F6F8] p-3 sm:p-6">
       <div className="max-w-[1600px] mx-auto">
 
         {/* HEADER */}
         <div className="mb-6">
-          <h1 className="text-4xl font-bold text-[#111827]">
+          <h1 className="text-2xl sm:text-4xl font-bold text-[#111827]">
             Nóminas Pendientes
           </h1>
           <p className="text-[#6B7280] mt-2">
@@ -172,7 +172,7 @@ export default function NominasPage() {
         </div>
 
         {/* TABLA */}
-        <div className="bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden">
+        <div className="hidden md:block bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden">
           <table className="w-full">
 
             <thead className="bg-[#F9FAFB] border-b border-[#E5E7EB]">
@@ -241,6 +241,60 @@ export default function NominasPage() {
           </table>
         </div>
 
+        {/* CELULAR: TARJETAS */}
+        <div className="md:hidden flex flex-col gap-3">
+          {nominas.map((item: any) => (
+            <div
+              key={item.empleado.id_empleado}
+              className="bg-white border border-[#E5E7EB] rounded-2xl p-4"
+            >
+
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <div className="font-semibold text-[#111827]">
+                    {item.empleado.nombre} {item.empleado.apellido_paterno}
+                  </div>
+                  <div className="text-sm text-[#6B7280] mt-0.5">
+                    Recibos pendientes: {item.acumulado.recibos_pendientes}
+                  </div>
+                </div>
+
+                <div className="text-xl font-bold text-green-600 shrink-0">
+                  ${item.acumulado.total_acumulado}
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2 mt-4">
+
+                <button
+                  onClick={() => abrirModal(item.empleado)}
+                  className="w-full h-11 bg-[#FEF3C7] text-[#92400E] hover:bg-[#FDE68A] rounded-xl text-sm font-semibold transition-colors"
+                >
+                  Aplicar Descuento
+                </button>
+
+                <Button
+                  onClick={() => pagarNomina(item.empleado.id_empleado)}
+                  style={{
+                    backgroundColor: "#2563EB",
+                    color: "white",
+                    height: "44px",
+                    width: "100%",
+                    borderRadius: "12px",
+                    border: "none",
+                    cursor: "pointer",
+                    fontWeight: "600",
+                  }}
+                >
+                  Realizar Pago de Nómina
+                </Button>
+
+              </div>
+
+            </div>
+          ))}
+        </div>
+
       </div>
 
       {/* =========================================
@@ -248,8 +302,8 @@ export default function NominasPage() {
       ========================================= */}
 
       {modalAbierto && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl p-8 w-full max-w-md shadow-xl">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-5 sm:p-8 w-full max-w-md shadow-xl max-h-[90vh] overflow-y-auto">
 
             {/* HEADER MODAL */}
             <h2 className="text-xl font-bold text-[#111827] mb-1">
@@ -267,7 +321,7 @@ export default function NominasPage() {
               <select
                 value={concepto}
                 onChange={(e) => setConcepto(e.target.value)}
-                className="w-full h-12 rounded-xl border border-[#D1D5DB] px-3"
+                className="w-full h-12 rounded-xl border border-[#D1D5DB] bg-white px-3 text-base"
               >
                 <option value="">Selecciona un concepto</option>
                 <option value="COMIDA">Comida</option>
@@ -288,7 +342,7 @@ export default function NominasPage() {
                   value={conceptoCustom}
                   onChange={(e) => setConceptoCustom(e.target.value)}
                   placeholder="Ej. Rotura de equipo"
-                  className="w-full h-12 rounded-xl border border-[#D1D5DB] px-3"
+                  className="w-full h-12 rounded-xl border border-[#D1D5DB] bg-white px-3 text-base"
                 />
               </div>
             )}
@@ -306,13 +360,13 @@ export default function NominasPage() {
                   onChange={(e) => setMonto(e.target.value)}
                   placeholder="0.00"
                   min="0"
-                  className="w-full h-12 rounded-xl border border-[#D1D5DB] pl-7 pr-3"
+                  className="w-full h-12 rounded-xl border border-[#D1D5DB] pl-7 pr-3 text-base"
                 />
               </div>
             </div>
 
             {/* BOTONES */}
-            <div className="flex gap-3">
+            <div className="flex flex-col-reverse sm:flex-row gap-3">
               <button
                 onClick={cerrarModal}
                 className="flex-1 h-12 rounded-xl border border-[#D1D5DB] text-[#374151] font-medium hover:bg-[#F9FAFB] transition-colors"

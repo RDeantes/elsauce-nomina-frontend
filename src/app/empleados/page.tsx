@@ -371,7 +371,7 @@ export default function Home() {
 
   return (
 
-    <main className="min-h-screen bg-[#F5F6F8] p-6">
+    <main className="min-h-screen bg-[#F5F6F8] p-3 sm:p-6">
 
       <div className="max-w-[1600px] mx-auto">
 
@@ -381,7 +381,7 @@ export default function Home() {
 
         <div className="mb-6">
 
-          <h1 className="text-4xl font-bold text-[#111827]">
+          <h1 className="text-2xl sm:text-4xl font-bold text-[#111827]">
             Empleados
           </h1>
 
@@ -395,7 +395,7 @@ export default function Home() {
         {/* FORMULARIO */}
         {/* ========================================= */}
 
-        <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 mb-6">
+        <div className="bg-white border border-[#E5E7EB] rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6">
 
           <div className="mb-8">
 
@@ -415,11 +415,11 @@ export default function Home() {
 
           <div className="mb-10">
 
-            <h3 className="text-lg font-semibold text-[#111827] mb-6">
+            <h3 className="text-lg font-semibold text-[#111827] mb-4">
               Información Personal
             </h3>
 
-            <div className="grid grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
 
               <div>
                 <label className="block text-sm font-medium mb-2">
@@ -469,7 +469,7 @@ export default function Home() {
                   name="sexo"
                   value={formulario.sexo}
                   onChange={manejarCambio}
-                  className="w-full h-12 rounded-xl border border-[#D1D5DB] px-3"
+                  className="w-full h-12 rounded-xl border border-[#D1D5DB] bg-white px-3 text-base"
                 >
                   <option value="">Selecciona</option>
                   <option value="HOMBRE">Hombre</option>
@@ -488,11 +488,11 @@ export default function Home() {
 
           <div className="mb-10">
 
-            <h3 className="text-lg font-semibold text-[#111827] mb-6">
+            <h3 className="text-lg font-semibold text-[#111827] mb-4">
               Información Laboral
             </h3>
 
-            <div className="grid grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
 
               <div>
                 <label className="block text-sm font-medium mb-2">
@@ -503,7 +503,7 @@ export default function Home() {
                   name="departamento_id"
                   value={formulario.departamento_id}
                   onChange={manejarCambio}
-                  className="w-full h-12 rounded-xl border border-[#D1D5DB] px-3"
+                  className="w-full h-12 rounded-xl border border-[#D1D5DB] bg-white px-3 text-base"
                 >
                   <option value="">Selecciona</option>
 
@@ -529,7 +529,7 @@ export default function Home() {
                   name="puesto_id"
                   value={formulario.puesto_id}
                   onChange={manejarCambio}
-                  className="w-full h-12 rounded-xl border border-[#D1D5DB] px-3"
+                  className="w-full h-12 rounded-xl border border-[#D1D5DB] bg-white px-3 text-base"
                 >
                   <option value="">Selecciona</option>
 
@@ -555,7 +555,7 @@ export default function Home() {
                   name="tipo_contrato"
                   value={formulario.tipo_contrato}
                   onChange={manejarCambio}
-                  className="w-full h-12 rounded-xl border border-[#D1D5DB] px-3"
+                  className="w-full h-12 rounded-xl border border-[#D1D5DB] bg-white px-3 text-base"
                 >
                   <option value="">Selecciona</option>
                   <option value="INDEFINIDO">Indefinido</option>
@@ -578,7 +578,7 @@ export default function Home() {
                       activo: e.target.value === "true",
                     })
                   }
-                  className="w-full h-12 rounded-xl border border-[#D1D5DB] px-3"
+                  className="w-full h-12 rounded-xl border border-[#D1D5DB] bg-white px-3 text-base"
                 >
                   <option value="true">Activo</option>
                   <option value="false">Inactivo</option>
@@ -596,11 +596,11 @@ export default function Home() {
 
           <div className="mb-10">
 
-            <h3 className="text-lg font-semibold text-[#111827] mb-6">
+            <h3 className="text-lg font-semibold text-[#111827] mb-4">
               Información de Pago
             </h3>
 
-            <div className="grid grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
 
               <div>
                 <label className="block text-sm font-medium mb-2">
@@ -611,7 +611,7 @@ export default function Home() {
                   name="Tipo_Pago"
                   value={formulario.Tipo_Pago}
                   onChange={manejarCambio}
-                  className="w-full h-12 rounded-xl border border-[#D1D5DB] px-3"
+                  className="w-full h-12 rounded-xl border border-[#D1D5DB] bg-white px-3 text-base"
                 >
                   <option value="">Selecciona</option>
                   <option value="DIARIO">Diario</option>
@@ -667,19 +667,19 @@ export default function Home() {
           </div>
 
           {/* BOTONES */}
-          <div className="flex justify-end gap-4">
+          <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-3 sm:gap-4">
 
             <Button
               variant="outline"
               onClick={limpiarFormulario}
-              className="h-12 px-6 rounded-xl"
+              className="h-12 px-6 rounded-xl w-full sm:w-auto"
             >
               Cancelar
             </Button>
 
             <Button
               onClick={guardarEmpleado}
-              className="bg-[#2563EB] hover:bg-[#1D4ED8] h-12 px-6 rounded-xl"
+              className="bg-[#2563EB] hover:bg-[#1D4ED8] h-12 px-6 rounded-xl w-full sm:w-auto"
             >
               {modoEdicion
                 ? "Actualizar Empleado"
@@ -694,7 +694,7 @@ export default function Home() {
         {/* BUSCADOR */}
         {/* ========================================= */}
 
-        <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 mb-6">
+        <div className="bg-white border border-[#E5E7EB] rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6">
 
           <Input
             placeholder="Buscar empleado por nombre, apellido o ID..."
@@ -714,7 +714,7 @@ export default function Home() {
         <div className="bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden">
 
           {/* HEADER */}
-          <div className="grid grid-cols-6 gap-4 px-6 py-4 bg-[#F9FAFB] border-b border-[#E5E7EB]">
+          <div className="hidden md:grid grid-cols-6 gap-4 px-6 py-4 bg-[#F9FAFB] border-b border-[#E5E7EB]">
 
             <div className="font-semibold">
               ID
@@ -776,77 +776,108 @@ export default function Home() {
               );
 
             })
-            .map((empleado: any) => (
+            .map((empleado: any) => {
 
-              <div
-                key={empleado.id_empleado}
-                className="grid grid-cols-6 gap-4 px-6 py-5 border-b border-[#F3F4F6] items-center"
-              >
+              const puestoNombre =
+                puestos.find(
+                  (puesto: any) =>
+                    puesto.id === Number(empleado.puesto_id)
+                )?.nombre || "Sin puesto";
 
-                <div>
-                  {empleado.id_empleado}
+              const departamentoNombre =
+                departamentos.find(
+                  (departamento: any) =>
+                    departamento.id === Number(empleado.departamento_id)
+                )?.nombre || "Sin departamento";
+
+              const estado = empleado.activo ? (
+                <span className="bg-[#DCFCE7] text-[#15803D] text-sm px-3 py-1 rounded-full">
+                  Activo
+                </span>
+              ) : (
+                <span className="bg-[#FEE2E2] text-[#DC2626] text-sm px-3 py-1 rounded-full">
+                  Inactivo
+                </span>
+              );
+
+              return (
+
+                <div key={empleado.id_empleado}>
+
+                  {/* CELULAR: TARJETA */}
+                  <div className="md:hidden flex items-start justify-between gap-3 px-4 py-4 border-b border-[#F3F4F6]">
+
+                    <div className="min-w-0">
+
+                      <div className="font-medium text-[#111827]">
+                        {empleado.nombre} {empleado.apellido_paterno}
+                      </div>
+
+                      <div className="text-sm text-[#6B7280] mt-0.5">
+                        ID {empleado.id_empleado} · {puestoNombre}
+                      </div>
+
+                      <div className="text-sm text-[#6B7280]">
+                        {departamentoNombre}
+                      </div>
+
+                      <div className="mt-2">
+                        {estado}
+                      </div>
+
+                    </div>
+
+                    <button
+                      onClick={() => editarEmpleado(empleado)}
+                      aria-label="Editar empleado"
+                      className="shrink-0 h-11 w-11 flex items-center justify-center rounded-xl border border-[#E5E7EB] hover:text-blue-600"
+                    >
+                      ✏️
+                    </button>
+
+                  </div>
+
+                  {/* ESCRITORIO: FILA */}
+                  <div className="hidden md:grid grid-cols-6 gap-4 px-6 py-5 border-b border-[#F3F4F6] items-center">
+
+                    <div>
+                      {empleado.id_empleado}
+                    </div>
+
+                    <div className="font-medium">
+                      {empleado.nombre} {empleado.apellido_paterno}
+                    </div>
+
+                    <div>
+                      {puestoNombre}
+                    </div>
+
+                    <div>
+                      {departamentoNombre}
+                    </div>
+
+                    <div>
+                      {estado}
+                    </div>
+
+                    <div className="flex justify-end gap-4">
+
+                      <button
+                        onClick={() => editarEmpleado(empleado)}
+                        className="hover:text-blue-600"
+                      >
+                        ✏️
+                      </button>
+
+                    </div>
+
+                  </div>
+
                 </div>
 
-                <div className="font-medium">
-                  {empleado.nombre} {empleado.apellido_paterno}
-                </div>
+              );
 
-                <div>
-
-                  {
-                    puestos.find(
-                      (puesto: any) =>
-                        puesto.id === Number(empleado.puesto_id)
-                    )?.nombre || "Sin puesto"
-                  }
-
-                </div>
-
-                <div>
-
-                  {
-                    departamentos.find(
-                      (departamento: any) =>
-                        departamento.id === Number(empleado.departamento_id)
-                    )?.nombre || "Sin departamento"
-                  }
-
-                </div>
-
-                <div>
-
-                  {empleado.activo ? (
-
-                    <span className="bg-[#DCFCE7] text-[#15803D] text-sm px-3 py-1 rounded-full">
-                      Activo
-                    </span>
-
-                  ) : (
-
-                    <span className="bg-[#FEE2E2] text-[#DC2626] text-sm px-3 py-1 rounded-full">
-                      Inactivo
-                    </span>
-
-                  )}
-
-                </div>
-
-                <div className="flex justify-end gap-4">
-
-                  <button
-                    onClick={() => editarEmpleado(empleado)}
-                    className="hover:text-blue-600"
-                  >
-                    ✏️
-                  </button>
-
-                
-
-                </div>
-
-              </div>
-
-            ))}
+            })}
 
         </div>
 
