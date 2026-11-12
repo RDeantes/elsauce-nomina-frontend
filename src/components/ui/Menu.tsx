@@ -21,6 +21,10 @@ export default function Menu() {
                 Empleados
             </Link>
 
+             <Link href="/descansos">
+                Descansos
+            </Link>
+
             <Link href="/asistencias">
                 Asistencias
             </Link>
@@ -31,10 +35,6 @@ export default function Menu() {
 
             <Link href="/historial">
                 Historial
-            </Link>
-
-            <Link href="/descansos">
-                Descansos
             </Link>
 
         </div>
