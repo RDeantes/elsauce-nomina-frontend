@@ -10,9 +10,10 @@ export default function Menu() {
             style={{
                 background: "black",
                 color: "white",
-                padding: "20px",
+                padding: "16px 20px",
                 display: "flex",
-                gap: "20px"
+                flexWrap: "wrap",
+                gap: "12px 20px"
             }}
         >
 
@@ -28,8 +29,12 @@ export default function Menu() {
                 Nómina
             </Link>
 
+            <Link href="/historial">
+                Historial
+            </Link>
+
             <Link href="/descansos">
-             Descansos
+                Descansos
             </Link>
 
         </div>
